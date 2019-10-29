@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ApiResource()
  */
 class Article
 {
@@ -13,36 +16,43 @@ class Article
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"list"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"list"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"list"})
      */
     private $enable;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"list"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"list"})
      */
     private $publishedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
+     * @Groups({"list"})
      */
     private $category;
 
